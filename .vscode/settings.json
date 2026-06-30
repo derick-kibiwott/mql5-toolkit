@@ -1,0 +1,9 @@
+{
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}/**",
+    "c:\\Users\\Meshack\\AppData\\Roaming\\MetaQuotes\\Terminal\\10EBA4CBB6B5A744AE010794F4A32C35\\MQL5\\Experts\\trading-expert-advisors\\Include",
+    "C:\\Users\\Meshack\\AppData\\Roaming\\MetaQuotes\\Terminal\\0FD46431C77C480ECC35F3DA8B67FC37\\MQL5\\Include\\Include"
+  ]
+} // {
+//   "C_Cpp.errorSquiggles": "disabled"
+// }
