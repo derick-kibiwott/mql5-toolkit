@@ -18,8 +18,8 @@ input int InpSlowEMAPeriod = 21; // Slow EMA Period
 
 input group "Risk Management";
 input double InpLotSize = 0.1;       // Trade Volume (Lots)
-input int InpStopLoss = 1500;        // Stop Loss (Points - e.g, 150 points for Gold)
-input int InpTakeProfit = 3000;      // Take Profit (Points - e.g, 300 points for Gold)
+input int InpStopLoss = 1500;        // Stop Loss (Points)
+input int InpTakeProfit = 3000;      // Take Profit (Points)
 input ulong InpMagicNumber = 888111; // Expert Magic Number
 
 class BarDetector
