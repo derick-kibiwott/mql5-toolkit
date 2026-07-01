@@ -11,5 +11,14 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "**/*.ex5": true
+  },
+  "editor.quickSuggestions": {
+    "comments": "on",
+    "strings": "on",
+    "other": "on"
+  },
+  "[markdown]": {
+    "editor.quickSuggestions": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false
   }
 }
