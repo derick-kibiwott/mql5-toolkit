@@ -10,6 +10,7 @@
 #property strict
 
 #include <Trade\Trade.mqh>
+#include "../../include/time/Bar_Detector.mqh";
 
 // Adding input groups for better organization in the MetaTrader 5 interface
 input group "Strategy Settings";
@@ -21,31 +22,6 @@ input double InpLotSize = 0.1;       // Trade Volume (Lots)
 input int InpStopLoss = 1500;        // Stop Loss (Points)
 input int InpTakeProfit = 3000;      // Take Profit (Points)
 input ulong InpMagicNumber = 888111; // Expert Magic Number
-
-class BarDetector
-{
-  private:
-    datetime last_bar_time_; // Variable to store the time of the last detected bar
-
-  public:
-    // Constructor to initialize the last bar time
-    BarDetector() : last_bar_time_(0) {};
-
-    // Method to check if a new bar has formed
-    bool isNewBar()
-    {
-        datetime current_bar_time = (datetime)SeriesInfoInteger(_Symbol, _Period, SERIES_LASTBAR_DATE);
-
-        // Check if the current bar time is different from the last recorded bar time
-        if (current_bar_time != last_bar_time_)
-        {
-            last_bar_time_ = current_bar_time;
-            return true;
-        }
-        // If the bar time hasn't changed, return false
-        return false;
-    };
-};
 
 class EMAIndicator
 {
