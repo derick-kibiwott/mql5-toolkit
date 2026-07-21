@@ -1,3 +1,27 @@
 BasedOnStyle: Microsoft
-SortIncludes: false
-ColumnLimit: 2800
+Language: Cpp
+IndentWidth: 4
+UseTab: Never
+ColumnLimit: 180
+
+# This collapses the line by attaching the curly bracket to the end of the statement
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: true
+  AfterControlStatement: Never
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: true
+  AfterUnion: false
+  BeforeCatch: true
+  BeforeElse: true
+  BeforeWhile: true
+  IndentBraces: false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
+
+BreakAfterOpenBracketBracedList: true
+BreakBeforeCloseBracketBracedList: true
+AllowShortFunctionsOnASingleLine: None

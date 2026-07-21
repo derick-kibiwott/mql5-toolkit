@@ -47,6 +47,18 @@
     "description": "Inserts a clean, performance-optimized template for an MQL5 Expert Advisor.",
   },
 
+  "MQL5 Comment Template": {
+    "scope": "mql5, cpp, c",
+    "prefix": "mqlcomment",
+    "body": [
+      "//+------------------------------------------------------------------+",
+      "//| Object type here ...                                              ",
+      "//+------------------------------------------------------------------+",
+    ],
+
+    "description": "Insert a clean comment for classe, function and even variables",
+  },
+
   "MQL5 Indicator Base Template": {
     "scope": "mql5,cpp,c",
     "prefix": "mqlheadind",

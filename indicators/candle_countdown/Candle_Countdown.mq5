@@ -6,7 +6,7 @@
 #property copyright "Copyright 2026, Derick Kibiwott"
 #property link "https://www.mql5.com"
 #property version "1.00"
-#property description "Displays a live countdown timer for the active candle, updating every second until the bar closes. The timer follows the current bid price, remains offset from the forming candle for improved visibility, and automatically formats the remaining time based on the active timeframe."
+#property description "Displays a live countdown timer for the active candle, updating every second until the bar closes. The timer follows the current bid price,remains offset from the forming candle for improved visibility, and automatically formats the remaining time based on the active timeframe."
 
 #include "../../include/time/Bar_Detector.mqh"
 
@@ -14,10 +14,10 @@
 #property indicator_plots 0
 
 //--- Inputs
-input int inp_x_offset = 2;  // X-axis offset
-input int inp_y_offset = 18; // Y-axis offset
-input int inp_font_size = 8; // Font size
-input color inp_countdown_label_color = clrMidnightBlue;
+input int inp_x_offset = 2;                              // X-axis offset
+input int inp_y_offset = 18;                             // Y-axis offset
+input int inp_font_size = 8;                             // Font size
+input color inp_countdown_label_color = clrMidnightBlue; // Label Color
 
 const long CURRENT_CHART = 0;
 const int MAIN_WINDOW = 0;
@@ -44,8 +44,7 @@ class CountdownLabel
 
         bool success = ObjectCreate(CURRENT_CHART, name_, OBJ_LABEL, MAIN_WINDOW, 0, 0);
 
-        if (!success)
-        {
+        if (!success) {
             Print("Failed to create label: ", name_);
             return false;
         }
@@ -76,8 +75,7 @@ class CountdownLabel
         datetime current_bar_open_time = iTime(_Symbol, _Period, CANDLE_SHIFT);
         double current_bid_price = SymbolInfoDouble(_Symbol, SYMBOL_BID);
 
-        if (ChartTimePriceToXY(CURRENT_CHART, MAIN_WINDOW, current_bar_open_time, current_bid_price, x, y))
-        {
+        if (ChartTimePriceToXY(CURRENT_CHART, MAIN_WINDOW, current_bar_open_time, current_bid_price, x, y)) {
             setXCoord();
             return ObjectSetInteger(CURRENT_CHART, name_, OBJPROP_YDISTANCE, y - Y_OFFSET_);
         }
@@ -144,13 +142,11 @@ class CandleCountdown
 
         label_.trackPrice();
 
-        if (bar_detector_.isNewBar())
-        {
+        if (bar_detector_.isNewBar()) {
             setCloseTime();
         }
 
-        if (label_.setText(formatTime()))
-        {
+        if (label_.setText(formatTime())) {
 
             return true;
         }
@@ -165,8 +161,7 @@ class CandleCountdown
 
     void destroy()
     {
-        if (!label_.destroy())
-        {
+        if (!label_.destroy()) {
             Print("Failed to delete countdown label.");
         }
     };
@@ -200,25 +195,24 @@ class CandleCountdown
         const int minutes = remaining / SECONDS_PER_MINUTE;
         const int seconds = remaining % SECONDS_PER_MINUTE;
 
-        switch (_Period)
-        {
+        switch (_Period) {
 
         case PERIOD_MN1: {
-            return StringFormat("%02d:%02d:%02d:%02d:%02d", weeks, days, hours, minutes, seconds);
+            return StringFormat("%2dw %2dd %02dh %02dm %02ds", weeks, days, hours, minutes, seconds);
         }
 
         case PERIOD_D1:
         case PERIOD_W1: {
-            return StringFormat("%02d:%02d:%02d:%02d", days, hours, minutes, seconds);
+            return StringFormat("%2dd %02dh %02dm %02ds", days, hours, minutes, seconds);
         }
 
         case PERIOD_H1:
         case PERIOD_H4: {
-            return StringFormat("%02d:%02d:%02d", hours, minutes, seconds);
+            return StringFormat("%2dh %02dm %02ds", hours, minutes, seconds);
         }
 
         default: {
-            return StringFormat("%02d:%02d", minutes, seconds);
+            return StringFormat("%02dm %02ds", minutes, seconds);
         }
 
             // end case
@@ -239,8 +233,7 @@ CandleCountdown candle_countdown;
 //+------------------------------------------------------------------+
 int OnInit()
 {
-    if (!candle_countdown.create())
-    {
+    if (!candle_countdown.create()) {
         return INIT_FAILED;
     }
     EventSetTimer(1);
